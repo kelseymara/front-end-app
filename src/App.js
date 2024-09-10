@@ -25,13 +25,6 @@ function App() {
     }
   };
 
-  // Handle changes to form inputs
-  const handleInputChange = (e) => {
-    if (selectedCustomer) {
-      const { name, value } = e.target;
-      setSelectedCustomer({ ...selectedCustomer, [name]: value });
-    }
-  };
 
   const handleDeleteClick = () => {
     console.log('Delete button clicked');
@@ -45,9 +38,9 @@ function App() {
     setSelectedCustomer(blankCustomer);
   };
 
-  // const handleItemClick = () => {
-  //   console.log('Item in table clicked');
-  // };
+  // If customer is not selected, then header is "Add", else it is "Updated"
+  const formHeader = selectedCustomer.id === -1 ? 'Add' : 'Update'; 
+ 
 
   return (
     <div className="App">
@@ -77,7 +70,7 @@ function App() {
  
       
       {/* Customer Form */}
-      <h2>Update</h2>
+      <h2>{formHeader}</h2>
       <form className="border">
         <div>
           <label>Name:</label>
