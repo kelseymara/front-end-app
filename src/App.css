@@ -10,6 +10,12 @@ th, td {
   padding: 8px; /* Adds some padding inside each cell */
 }
 
+/* Selected Row Styling */
+tr.selected {
+  font-weight: bold;
+  background-color: #f0f0f0;
+}
+
 form {
   border: 1px solid #ccc; /* Adds a border around the form */
   max-width: 350px; /* Sets a maximum width for the form */

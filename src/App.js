@@ -9,6 +9,15 @@ function App() {
     { name: 'Tuan', email: 'tuan@example.com', password: 'password567' },
   ]);
 
+   // Manage state for the selected customer
+   const [selectedCustomer, setSelectedCustomer] = useState(null);
+  
+    // Handle row click
+  const handleItemClick = (customer) => {
+    setSelectedCustomer(selectedCustomer === customer ? null : customer);
+  };
+
+
   const handleDeleteClick = () => {
     console.log('Delete button clicked');
   };
@@ -21,9 +30,9 @@ function App() {
     console.log('Cancel button clicked');
   };
 
-  const handleItemClick = () => {
-    console.log('Item in table clicked');
-  };
+  // const handleItemClick = () => {
+  //   console.log('Item in table clicked');
+  // };
 
   return (
     <div className="App">
@@ -39,7 +48,9 @@ function App() {
         </thead>
         <tbody>
           {customers.map((customer, index) => (
-            <tr key={index} onClick={handleItemClick}>
+            <tr key={index}
+            onClick={() => handleItemClick(customer)}
+            className={selectedCustomer === customer ? 'selected' : ''}>
               <td>{customer.name}</td>
               <td>{customer.email}</td>
               <td>{customer.password}</td>
