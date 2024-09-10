@@ -6,7 +6,7 @@ function App() {
   // Blank customer (no customer selected)
   const blankCustomer = { id: -1, name: '', email: '', password: '' };
 
-  const [customers] = useState([
+  const [customers,setCustomers] = useState([
     { id:0, name: 'Kelsey', email: 'kelsey@example.com', password: 'password123' },
     { id:1, name: 'Melanie', email: 'melanie@example.com', password: 'password456' },
     { id:2, name: 'Tuan', email: 'tuan@example.com', password: 'password567' },
@@ -30,17 +30,29 @@ function App() {
     console.log('Delete button clicked');
   };
 
+
+  // Handle Save button click
   const handleSaveClick = () => {
-    console.log('Save button clicked');
+   console.log('Save button clicked');
   };
+
 
   const handleCancelClick = () => {
     setSelectedCustomer(blankCustomer);
+    
   };
 
   // If customer is not selected, then header is "Add", else it is "Updated"
   const formHeader = selectedCustomer.id === -1 ? 'Add' : 'Update'; 
  
+    // Handle form input change
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setSelectedCustomer({
+        ...selectedCustomer,
+        [name]: value,
+      });
+    };
 
   return (
     <div className="App">
@@ -75,23 +87,29 @@ function App() {
         <div>
           <label>Name:</label>
           <input
+            name="name"
             type="text"
             className="mt-3"
             value={selectedCustomer ? selectedCustomer.name : ''}
+            onChange={handleInputChange}
           />
         </div>
         <div>
           <label>Email:</label>
           <input
+            name="email"
             type="email"
             value={selectedCustomer ? selectedCustomer.email : ''}
+            onChange={handleInputChange}
           />
         </div>
         <div>
           <label>Password:</label>
           <input
+            name="password"
             type="password"
             value={selectedCustomer ? selectedCustomer.password : ''}
+            onChange={handleInputChange}
           />
         </div>
         <button type="button" onClick={handleDeleteClick} className="me-2">Delete</button>
