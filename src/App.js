@@ -65,7 +65,18 @@ function App() {
   }, []); */
 
   const handleSaveClick = () => {
-    console.log('Saved button is clicked');
+    // Check if the form is in "Add" mode
+    if (selectedCustomer.id === -1) {
+      // In "Add" mode, call post() to add a new record
+      post(selectedCustomer);
+    } else {
+      // In "Update" mode, call put() to update an existing record
+      put(selectedCustomer.id, selectedCustomer);
+    }
+  
+    // Update the customer list and clear the form
+    setCustomers(getAll());
+    setSelectedCustomer(blankCustomer); // Clear the form by setting it to blankCustomer
   };
 
   const handleCancelClick = () => {
