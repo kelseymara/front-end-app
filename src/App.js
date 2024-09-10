@@ -9,8 +9,6 @@ function App() {
     { name: 'Tuan', email: 'tuan@example.com', password: 'password567' },
   ]);
 
-  const [currentCustomer, setCurrentCustomer] = useState({ name: '', email: '', password: '' });
-
   const handleDeleteClick = () => {
     console.log('Delete button clicked');
   };
@@ -23,9 +21,14 @@ function App() {
     console.log('Cancel button clicked');
   };
 
+  const handleItemClick = () => {
+    console.log('Item in table clicked');
+  };
+
   return (
     <div className="App">
      <h1>Customer Management System</h1>
+     <h2>Customer List</h2>
      <table>
         <thead>
           <tr>
@@ -36,7 +39,7 @@ function App() {
         </thead>
         <tbody>
           {customers.map((customer, index) => (
-            <tr key={index}>
+            <tr key={index} onClick={handleItemClick}>
               <td>{customer.name}</td>
               <td>{customer.email}</td>
               <td>{customer.password}</td>
@@ -47,7 +50,7 @@ function App() {
  
       
       {/* Customer Form */}
-      <h3>Update</h3>
+      <h2>Update</h2>
       <form>
         <div>
           <label>Name:</label>
