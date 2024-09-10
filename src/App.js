@@ -66,7 +66,7 @@ function App() {
             <tr key={customer.id}
             onClick={() => handleItemClick(customer)}
             className={selectedCustomer === customer ? 'selected' : ''}
-            style={{ fontWeight: selectedCustomer === customer.id ? 'bold' : 'normal' }} >
+            style={{ fontWeight: selectedCustomer.id === customer.id ? 'bold' : 'normal' }} >
               <td>{customer.name}</td>
               <td>{customer.email}</td>
               <td>{customer.password}</td>
