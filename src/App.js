@@ -1,6 +1,8 @@
 import './App.css';
 import React, { useState,useEffect } from 'react';
+import CustomerList from './components/CustomerList';
 import { getAll, get, deleteById, post, put } from './memdb';
+
 
 function App() {
 
@@ -44,25 +46,6 @@ function App() {
     getCustomers(); // Calls getCustomers when the component mounts
   }, []); // Empty dependency array means this effect runs once when the component mounts
   
-  /*
-  // Fetch the list of customers from the backend
-  const fetchCustomers = async () => {
-    try {
-      const response = await fetch('http://localhost:8080/api/customers');
-      if (!response.ok) {
-        throw new Error('Error fetching customers');
-      }
-      const customerList = await response.json();
-      setCustomers(customerList);
-    } catch (error) {
-      console.error('Failed to fetch customers:', error);
-    }
-  };
-
-  // Fetch customers when component mounts
-  useEffect(() => {
-    fetchCustomers();
-  }, []); */
 
   const handleSaveClick = () => {
     // Check if the form is in "Add" mode
@@ -99,30 +82,14 @@ function App() {
   return (
     <div className="App">
      <h1>Customer Management System</h1>
-     <h2 className="mt-4">Customer List</h2>
-     <table className="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Password</th>
-          </tr>
-        </thead>
-        <tbody>
-          {customers.map((customer, index) => (
-            <tr key={customer.id}
-            onClick={() => handleItemClick(customer)}
-            className={selectedCustomer === customer ? 'selected' : ''}
-            style={{ fontWeight: selectedCustomer.id === customer.id ? 'bold' : 'normal' }} >
-              <td>{customer.name}</td>
-              <td>{customer.email}</td>
-              <td>{customer.password}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
  
-      
+{/* Customer List Component */}
+ <CustomerList
+        customers={customers}
+        selectedCustomer={selectedCustomer}
+        onItemClick={handleItemClick}
+      />
+
       {/* Customer Form */}
       <h2>{formHeader}</h2>
       <form className="border">
