@@ -62,7 +62,8 @@ function App() {
           {customers.map((customer, index) => (
             <tr key={index}
             onClick={() => handleItemClick(customer)}
-            className={selectedCustomer === customer ? 'selected' : ''}>
+            className={selectedCustomer === customer ? 'selected' : ''}
+            style={{ fontWeight: selectedCustomer === customer ? 'bold' : 'normal' }} >
               <td>{customer.name}</td>
               <td>{customer.email}</td>
               <td>{customer.password}</td>
@@ -79,6 +80,7 @@ function App() {
           <label>Name:</label>
           <input
             type="text"
+            className="mt-3"
             value={selectedCustomer ? selectedCustomer.name : ''}
           />
         </div>
@@ -96,9 +98,9 @@ function App() {
             value={selectedCustomer ? selectedCustomer.password : ''}
           />
         </div>
-        <button type="button" onClick={handleDeleteClick}>Delete</button>
-        <button type="button" onClick={handleSaveClick}>Save</button>
-        <button type="button" onClick={handleCancelClick}>Cancel</button>
+        <button type="button" onClick={handleDeleteClick} className="me-2">Delete</button>
+        <button type="button" onClick={handleSaveClick} className="me-2">Save</button>
+        <button type="button" onClick={handleCancelClick} className="me-2">Cancel</button>
       </form>
 
     </div>
