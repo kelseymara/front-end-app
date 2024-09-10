@@ -5,11 +5,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Branches Overview
 - main: stage 1, initial react app
 - stage-02: a static version of the application that has the following features:
-• A title
-• A list of customers displaying "name", "email" and "password" for each
-• A customer form with:
-o A title that displays the form's state: "Add" or "Update"
-o Labelled Input fields for: "name", "email" and "password" o "delete", "save" and "cancel" buttons
+  - A title
+  - A list of customers displaying "name", "email" and "password" for each
+  - A customer form with:
+  - A title that displays the form's state: "Add" or "Update"
+  - Labelled Input fields for: "name", "email" and "password" o "delete", "save" and "cancel" buttons
 
 
 ## Available Scripts
