@@ -49,8 +49,8 @@ function App() {
   return (
     <div className="App">
      <h1>Customer Management System</h1>
-     <h2>Customer List</h2>
-     <table>
+     <h2 className="mt-4">Customer List</h2>
+     <table className="table table-bordered table-striped">
         <thead>
           <tr>
             <th>Name</th>
@@ -74,7 +74,7 @@ function App() {
       
       {/* Customer Form */}
       <h2>Update</h2>
-      <form>
+      <form className="border">
         <div>
           <label>Name:</label>
           <input
