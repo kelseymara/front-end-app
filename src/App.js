@@ -12,11 +12,23 @@ function App() {
    // Manage state for the selected customer
    const [selectedCustomer, setSelectedCustomer] = useState(null);
   
-    // Handle row click
-  const handleItemClick = (customer) => {
-    setSelectedCustomer(selectedCustomer === customer ? null : customer);
+  // Handle when a row is clicked
+   const handleItemClick = (customer) => {
+    // Toggle selection: deselect if already selected, select otherwise
+    if (selectedCustomer === customer) {
+      setSelectedCustomer(null);
+    } else {
+      setSelectedCustomer(customer);
+    }
   };
 
+  // Handle changes to form inputs
+  const handleInputChange = (e) => {
+    if (selectedCustomer) {
+      const { name, value } = e.target;
+      setSelectedCustomer({ ...selectedCustomer, [name]: value });
+    }
+  };
 
   const handleDeleteClick = () => {
     console.log('Delete button clicked');
@@ -67,18 +79,21 @@ function App() {
           <label>Name:</label>
           <input
             type="text"
+            value={selectedCustomer ? selectedCustomer.name : ''}
           />
         </div>
         <div>
           <label>Email:</label>
           <input
             type="email"
+            value={selectedCustomer ? selectedCustomer.email : ''}
           />
         </div>
         <div>
           <label>Password:</label>
           <input
             type="password"
+            value={selectedCustomer ? selectedCustomer.password : ''}
           />
         </div>
         <button type="button" onClick={handleDeleteClick}>Delete</button>
