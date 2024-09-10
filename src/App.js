@@ -6,12 +6,6 @@ function App() {
   // Blank customer (no customer selected)
   const blankCustomer = { id: -1, name: '', email: '', password: '' };
 
-  // const [customers,setCustomers] = useState([
-  //   { id:0, name: 'Kelsey', email: 'kelsey@example.com', password: 'password123' },
-  //   { id:1, name: 'Melanie', email: 'melanie@example.com', password: 'password456' },
-  //   { id:2, name: 'Tuan', email: 'tuan@example.com', password: 'password567' },
-  // ]);
-
    // Manage state for the selected customer 
    const [selectedCustomer, setSelectedCustomer] = useState(blankCustomer);
   
@@ -33,6 +27,7 @@ function App() {
   const [customers, setCustomers] = useState([]);
 
 
+  /*
   // Fetch the list of customers from the backend
   const fetchCustomers = async () => {
     try {
@@ -50,7 +45,7 @@ function App() {
   // Fetch customers when component mounts
   useEffect(() => {
     fetchCustomers();
-  }, []);
+  }, []); */
 
   const handleSaveClick = () => {
     console.log('Saved button is clicked');
