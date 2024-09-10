@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState,useEffect } from 'react';
+import { getAll, get, deleteById, post, put } from './memdb';
 
 function App() {
 
@@ -26,7 +27,15 @@ function App() {
 
   const [customers, setCustomers] = useState([]);
 
-
+  const getCustomers = () => {
+    console.log("in getCustomers()");
+    setCustomers(getAll()); // Calls getAll() from memdb.js and updates the state
+  };
+  
+  useEffect(() => {
+    getCustomers(); // Calls getCustomers when the component mounts
+  }, []); // Empty dependency array means this effect runs once when the component mounts
+  
   /*
   // Fetch the list of customers from the backend
   const fetchCustomers = async () => {
