@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 function App() {
 
-  const [customers, setCustomers] = useState([
+  const [customers] = useState([
     { name: 'Kelsey', email: 'kelsey@example.com', password: 'password123' },
     { name: 'Melanie', email: 'melanie@example.com', password: 'password456' },
     { name: 'Tuan', email: 'tuan@example.com', password: 'password567' },
