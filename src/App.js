@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState,useEffect } from 'react';
 import CustomerList from './components/CustomerList';
+import CustomerForm from './components/CustomerForm';
 import { getAll, get, deleteById, post, put } from './memdb';
 
 
@@ -91,40 +92,14 @@ function App() {
       />
 
       {/* Customer Form */}
-      <h2>{formHeader}</h2>
-      <form className="border">
-        <div>
-          <label>Name:</label>
-          <input
-            name="name"
-            type="text"
-            className="mt-3"
-            value={selectedCustomer ? selectedCustomer.name : ''}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input
-            name="email"
-            type="email"
-            value={selectedCustomer ? selectedCustomer.email : ''}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            name="password"
-            type="password"
-            value={selectedCustomer ? selectedCustomer.password : ''}
-            onChange={handleInputChange}
-          />
-        </div>
-        <button type="button" onClick={handleDeleteClick} className="me-2">Delete</button>
-        <button type="button" onClick={handleSaveClick} className="me-2">Save</button>
-        <button type="button" onClick={handleCancelClick} className="me-2">Cancel</button>
-      </form>
+      <CustomerForm
+        selectedCustomer={selectedCustomer}
+        formHeader={formHeader}
+        onInputChange={handleInputChange}
+        onSaveClick={handleSaveClick}
+        onCancelClick={handleCancelClick}
+        onDeleteClick={handleDeleteClick}
+      />
 
     </div>
   );
