@@ -42,7 +42,7 @@ function App() {
   };
 
   const handleCancelClick = () => {
-    console.log('Cancel button clicked');
+    setSelectedCustomer(blankCustomer);
   };
 
   // const handleItemClick = () => {
