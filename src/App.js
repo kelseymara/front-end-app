@@ -21,8 +21,16 @@ function App() {
   };
 
 
+  // Update the handleDeleteClick function
   const handleDeleteClick = () => {
     console.log('Delete button clicked');
+    if (selectedCustomer.id === -1) {
+      return; // Exit the function if no customer is currently selected
+    }
+
+    deleteById(selectedCustomer.id); // Delete the currently selected customer
+    setCustomers(getAll()); // Update the customer list
+    setSelectedCustomer(blankCustomer); // Clear the form by setting it to blankCustomer
   };
 
   const [customers, setCustomers] = useState([]);
