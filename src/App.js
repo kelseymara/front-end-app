@@ -3,20 +3,23 @@ import React, { useState } from 'react';
 
 function App() {
 
+  // Blank customer (no customer selected)
+  const blankCustomer = { id: -1, name: '', email: '', password: '' };
+
   const [customers] = useState([
-    { name: 'Kelsey', email: 'kelsey@example.com', password: 'password123' },
-    { name: 'Melanie', email: 'melanie@example.com', password: 'password456' },
-    { name: 'Tuan', email: 'tuan@example.com', password: 'password567' },
+    { id:0, name: 'Kelsey', email: 'kelsey@example.com', password: 'password123' },
+    { id:1, name: 'Melanie', email: 'melanie@example.com', password: 'password456' },
+    { id:2, name: 'Tuan', email: 'tuan@example.com', password: 'password567' },
   ]);
 
-   // Manage state for the selected customer
-   const [selectedCustomer, setSelectedCustomer] = useState(null);
+   // Manage state for the selected customer 
+   const [selectedCustomer, setSelectedCustomer] = useState(blankCustomer);
   
   // Handle when a row is clicked
    const handleItemClick = (customer) => {
     // Toggle selection: deselect if already selected, select otherwise
-    if (selectedCustomer === customer) {
-      setSelectedCustomer(null);
+    if (selectedCustomer.id === customer.id) {
+      setSelectedCustomer(blankCustomer);
     } else {
       setSelectedCustomer(customer);
     }
@@ -60,10 +63,10 @@ function App() {
         </thead>
         <tbody>
           {customers.map((customer, index) => (
-            <tr key={index}
+            <tr key={customer.id}
             onClick={() => handleItemClick(customer)}
             className={selectedCustomer === customer ? 'selected' : ''}
-            style={{ fontWeight: selectedCustomer === customer ? 'bold' : 'normal' }} >
+            style={{ fontWeight: selectedCustomer === customer.id ? 'bold' : 'normal' }} >
               <td>{customer.name}</td>
               <td>{customer.email}</td>
               <td>{customer.password}</td>
