@@ -2,9 +2,23 @@
   text-align: center;
 } */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+table, th, td {
+  border: 1px solid black; /* Adds a black border to the table and cells */
+}
+
+th, td {
+  padding: 8px; /* Adds some padding inside each cell */
+}
+
+form {
+  border: 1px solid #ccc; /* Adds a border around the form */
+  max-width: 350px; /* Sets a maximum width for the form */
+  border-radius: 4px; /* Rounded corners for the form */
+  padding: 20px; /* Adds padding inside the form */
+}
+form div {
+  margin-bottom: 10px; /* Add space between form fields */
+ 
 }
 
 @media (prefers-reduced-motion: no-preference) {
