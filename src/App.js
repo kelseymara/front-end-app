@@ -1,16 +1,16 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 function App() {
 
   // Blank customer (no customer selected)
   const blankCustomer = { id: -1, name: '', email: '', password: '' };
 
-  const [customers,setCustomers] = useState([
-    { id:0, name: 'Kelsey', email: 'kelsey@example.com', password: 'password123' },
-    { id:1, name: 'Melanie', email: 'melanie@example.com', password: 'password456' },
-    { id:2, name: 'Tuan', email: 'tuan@example.com', password: 'password567' },
-  ]);
+  // const [customers,setCustomers] = useState([
+  //   { id:0, name: 'Kelsey', email: 'kelsey@example.com', password: 'password123' },
+  //   { id:1, name: 'Melanie', email: 'melanie@example.com', password: 'password456' },
+  //   { id:2, name: 'Tuan', email: 'tuan@example.com', password: 'password567' },
+  // ]);
 
    // Manage state for the selected customer 
    const [selectedCustomer, setSelectedCustomer] = useState(blankCustomer);
@@ -30,12 +30,31 @@ function App() {
     console.log('Delete button clicked');
   };
 
+  const [customers, setCustomers] = useState([]);
 
-  // Handle Save button click
-  const handleSaveClick = () => {
-   console.log('Save button clicked');
+
+  // Fetch the list of customers from the backend
+  const fetchCustomers = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/customers');
+      if (!response.ok) {
+        throw new Error('Error fetching customers');
+      }
+      const customerList = await response.json();
+      setCustomers(customerList);
+    } catch (error) {
+      console.error('Failed to fetch customers:', error);
+    }
   };
 
+  // Fetch customers when component mounts
+  useEffect(() => {
+    fetchCustomers();
+  }, []);
+
+  const handleSaveClick = () => {
+    console.log('Saved button is clicked');
+  };
 
   const handleCancelClick = () => {
     setSelectedCustomer(blankCustomer);
