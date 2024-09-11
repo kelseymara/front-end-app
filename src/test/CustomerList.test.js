@@ -17,6 +17,12 @@ test('renders CustomerList with given customers', () => {
     // Check if the Customer List title is in the document
     expect(screen.getByText('Customer List')).toBeInTheDocument();
     
+    // Check if the table headers are in the document
+    expect(screen.getByText('Name')).toBeInTheDocument();
+    expect(screen.getByText('Email')).toBeInTheDocument();
+    expect(screen.getByText('Password')).toBeInTheDocument();
+    
+    
     // Check if both customers' names are in the document
     expect(screen.getByText('Kelsey')).toBeInTheDocument();
     expect(screen.getByText('Melanie')).toBeInTheDocument();
