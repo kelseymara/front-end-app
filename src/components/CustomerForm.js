@@ -1,5 +1,5 @@
 import React from 'react';
-import '../CustomerForm.css'
+import '../styles/CustomerForm.css'
 
 const CustomerForm = ({ selectedCustomer, formHeader, onInputChange, onSaveClick, onCancelClick, onDeleteClick }) => {
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../CustomerList.css'
+import '../styles/CustomerList.css'
 
 const CustomerList = ({ customers, selectedCustomer, onItemClick }) => {
   return (
