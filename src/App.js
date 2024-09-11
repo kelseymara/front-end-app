@@ -12,7 +12,7 @@ function App() {
    // Manage state for the selected customer 
    const [selectedCustomer, setSelectedCustomer] = useState(blankCustomer);
   
-  // Handle when a row is clicked
+  // Handle when a customer row is clicked
    const handleItemClick = (customer) => {
     // Toggle selection: deselect if already selected, select otherwise
     if (selectedCustomer.id === customer.id) {
@@ -39,6 +39,10 @@ function App() {
         // Fetch the updated customer list
         await getCustomers();
         setSelectedCustomer(blankCustomer); // Deselect the current customer
+
+        // Show success message
+       alert('Customer deleted successfully!');
+
       } catch (error) {
         console.error('Error deleting customer:', error);
       }
@@ -46,6 +50,7 @@ function App() {
 
   const [customers, setCustomers] = useState([]);
   
+   // Fetch the list of customers from the API
   const getCustomers = async () => {
     try {
       const response = await fetch("http://localhost:8080/api/customers"); // Make a GET request
@@ -60,6 +65,7 @@ function App() {
   };
 
 
+  // Fetch customers when the component mounts
   useEffect(() => {
     getCustomers(); // Calls getCustomers when the component mounts
   }, []); // Empty dependency array means this effect runs once when the component mounts
@@ -79,6 +85,20 @@ function App() {
     }
   };
 
+    // Put function
+    const put = async (id, customer) => {
+      try {
+        const response = await fetch(`http://localhost:8080/api/react/customers/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(customer),
+        });
+        if (!response.ok) throw new Error('Failed to update customer');
+        return await response.json();
+      } catch (error) {
+        console.error('Error updating customer:', error);
+      }
+    };
 
   const handleSaveClick = async () => {
     try {
@@ -87,9 +107,10 @@ function App() {
       // Determine if we need to post or put the customer
       if (selectedCustomer.id === -1) {
         updatedCustomer = await post(selectedCustomer);
+        alert('New customer created successfully!');
       } else {
-        console.log("update");
         updatedCustomer = await put(selectedCustomer.id, selectedCustomer);
+        alert('Customer updated successfully!');
       }
   
       // Update customer list in place if update was successful
@@ -109,23 +130,10 @@ function App() {
     }
   };
 
+  // "Cancel" button
   const handleCancelClick = () => {
     setSelectedCustomer(blankCustomer);
     
-  };
-
-  const put = async (id, customer) => {
-    try {
-      const response = await fetch(`http://localhost:8080/api/react/customers/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(customer),
-      });
-      if (!response.ok) throw new Error('Failed to update customer');
-      return await response.json();
-    } catch (error) {
-      console.error('Error updating customer:', error);
-    }
   };
 
   // If customer is not selected, then header is "Add Customer", else it is "Update Customer"
