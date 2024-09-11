@@ -23,12 +23,26 @@ function App() {
   };
 
 
- // handleDeleteClick function
-  const handleDeleteClick = () => {
-    console.log('Delete button clicked');
-    // if (selectedCustomer.id === -1) {
-    //   return; // Exit the function if no customer is currently selected
-    }
+    const handleDeleteClick = async () => {
+      if (selectedCustomer.id === -1) {
+        return; // Exit the function if no customer is currently selected
+      }
+    
+      try {
+        const response = await fetch(`http://localhost:8080/api/customers/${selectedCustomer.id}`, {
+          method: "DELETE",
+        });
+        if (!response.ok) {
+          throw new Error('Failed to delete customer');
+        }
+    
+        // Fetch the updated customer list
+        await getCustomers();
+        setSelectedCustomer(blankCustomer); // Deselect the current customer
+      } catch (error) {
+        console.error('Error deleting customer:', error);
+      }
+    };
 
   const [customers, setCustomers] = useState([]);
   
@@ -53,7 +67,7 @@ function App() {
   // Post Function
   const post = async (customer) => {
     try {
-      const response = await fetch("http://localhost:8080/api/react/customers", {
+      const response = await fetch("http://localhost:8080/api/customers", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(customer),
