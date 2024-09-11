@@ -12,3 +12,7 @@
     background-color: #d9c8ff; /* Light purple for table headers */
   }
 
+  .table tbody td {
+    color: #4a3c78; /* Darker purple for table cell text */
+    padding: 12px;
+  }
