@@ -3,9 +3,10 @@ import React from 'react';
 const CustomerForm = ({ selectedCustomer, formHeader, onInputChange, onSaveClick, onCancelClick, onDeleteClick }) => {
   return (
     <div>
+      <div className="card shadow-sm">
       <h2>{formHeader}</h2>
       <form className="border">
-        <div>
+        <div className="mb-3">
           <label>Name:</label>
           <input
             name="name"
@@ -33,10 +34,11 @@ const CustomerForm = ({ selectedCustomer, formHeader, onInputChange, onSaveClick
             onChange={onInputChange}
           />
         </div>
-        <button type="button" onClick={onDeleteClick} className="me-2">Delete</button>
-        <button type="button" onClick={onSaveClick} className="me-2">Save</button>
-        <button type="button" onClick={onCancelClick} className="me-2">Cancel</button>
+        <button type="button" onClick={onDeleteClick} className="me-2 btn btn-danger">Delete</button>
+        <button type="button" onClick={onSaveClick} className="me-2 btn btn-success">Save</button>
+        <button type="button" onClick={onCancelClick} className="me-2 btn btn-secondary">Cancel</button>
       </form>
+      </div>
     </div>
   );
 };
