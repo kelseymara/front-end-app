@@ -82,15 +82,27 @@ function App() {
 
   const handleSaveClick = async () => {
     try {
+      let updatedCustomer;
+  
+      // Determine if we need to post or put the customer
       if (selectedCustomer.id === -1) {
-        await post(selectedCustomer);
+        updatedCustomer = await post(selectedCustomer);
       } else {
         console.log("update");
-        await put(selectedCustomer.id, selectedCustomer);
+        updatedCustomer = await put(selectedCustomer.id, selectedCustomer);
       }
   
-      // Fetch the updated customer list
-      await getCustomers();
+      // Update customer list in place if update was successful
+      if (updatedCustomer) {
+        const updatedCustomers = customers.map(customer =>
+          customer.id === updatedCustomer.id ? updatedCustomer : customer
+        );
+        setCustomers(updatedCustomers);
+      } else {
+        // Fetch the updated customer list if POST was used
+        await getCustomers();
+      }
+  
       setSelectedCustomer(blankCustomer);
     } catch (error) {
       console.error('Error saving customer:', error);
