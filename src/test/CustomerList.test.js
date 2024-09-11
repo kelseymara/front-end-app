@@ -29,3 +29,19 @@ test('renders CustomerList with given customers', () => {
     expect(screen.getByText('Tuan')).toBeInTheDocument();
   });
   
+  // Test for applied style to selected customer 
+  test('applies bold style to selected customer', () => {
+    render(
+      <CustomerList
+        customers={mockCustomers}
+        selectedCustomer={mockCustomers[0]} // Providing a valid selectedCustomer
+        onItemClick={() => {}}
+      />
+    );
+  
+    // Getting Row with my name
+    const kelseyRow = screen.getByText('Kelsey').closest('tr');
+    
+    // Ensure the row has the correct style
+    expect(kelseyRow).toHaveStyle('fontWeight: bold');
+  });
