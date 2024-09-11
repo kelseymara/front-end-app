@@ -1,8 +1,9 @@
 import React from 'react';
+import '../CustomerForm.css'
 
 const CustomerForm = ({ selectedCustomer, formHeader, onInputChange, onSaveClick, onCancelClick, onDeleteClick }) => {
   return (
-    <div>
+    <div className="customer-form-container">
       <div className="card shadow-sm">
       <h2>{formHeader}</h2>
       <form className="border">

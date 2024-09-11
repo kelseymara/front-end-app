@@ -142,7 +142,7 @@ function App() {
 
   return (
     <div className="App">
-     <h1>Customer Management System</h1>
+     {/* <h1>Customer Management System</h1> */}
  
 {/* Customer List Component */}
  <CustomerList

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-
+import '../CustomerList.css'
 
 const CustomerList = ({ customers, selectedCustomer, onItemClick }) => {
   return (
-    <div>
-      <h2 className="mt-4">Customer List</h2>
+    <div className="customer-list-container">
+      <h2>Customer List</h2>
       <table className="table table-bordered table-striped">
         <thead>
           <tr>
