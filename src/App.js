@@ -72,7 +72,7 @@ function App() {
         await post(selectedCustomer);
       } else {
         console.log("update");
-        //await put(selectedCustomer.id, selectedCustomer);
+        await put(selectedCustomer.id, selectedCustomer);
       }
   
       // Fetch the updated customer list
@@ -86,6 +86,20 @@ function App() {
   const handleCancelClick = () => {
     setSelectedCustomer(blankCustomer);
     
+  };
+
+  const put = async (id, customer) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/react/customers/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(customer),
+      });
+      if (!response.ok) throw new Error('Failed to update customer');
+      return await response.json();
+    } catch (error) {
+      console.error('Error updating customer:', error);
+    }
   };
 
   // If customer is not selected, then header is "Add", else it is "Updated"
