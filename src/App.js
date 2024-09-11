@@ -2,7 +2,6 @@ import './App.css';
 import React, { useState,useEffect } from 'react';
 import CustomerList from './components/CustomerList';
 import CustomerForm from './components/CustomerForm';
-import { getAll, get, deleteById, post, put } from './memdb';
 
 
 function App() {
@@ -24,43 +23,64 @@ function App() {
   };
 
 
-  // Update the handleDeleteClick function
+ // handleDeleteClick function
   const handleDeleteClick = () => {
     console.log('Delete button clicked');
-    if (selectedCustomer.id === -1) {
-      return; // Exit the function if no customer is currently selected
+    // if (selectedCustomer.id === -1) {
+    //   return; // Exit the function if no customer is currently selected
     }
 
-    deleteById(selectedCustomer.id); // Delete the currently selected customer
-    setCustomers(getAll()); // Update the customer list
-    setSelectedCustomer(blankCustomer); // Clear the form by setting it to blankCustomer
-  };
-
   const [customers, setCustomers] = useState([]);
-
-  const getCustomers = () => {
-    console.log("in getCustomers()");
-    setCustomers(getAll()); // Calls getAll() from memdb.js and updates the state
-  };
   
+  const getCustomers = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/customers"); // Make a GET request
+      if (!response.ok) {
+        throw new Error('Failed to fetch customers');
+      }
+      const data = await response.json(); // Parse the JSON response
+      setCustomers(data); // Update the state with fetched data
+    } catch (error) {
+      console.error('Error fetching customers:', error);
+    }
+  };
+
+
   useEffect(() => {
     getCustomers(); // Calls getCustomers when the component mounts
   }, []); // Empty dependency array means this effect runs once when the component mounts
   
-
-  const handleSaveClick = () => {
-    // Check if the form is in "Add" mode
-    if (selectedCustomer.id === -1) {
-      // In "Add" mode, call post() to add a new record
-      post(selectedCustomer);
-    } else {
-      // In "Update" mode, call put() to update an existing record
-      put(selectedCustomer.id, selectedCustomer);
+  // Post Function
+  const post = async (customer) => {
+    try {
+      const response = await fetch("http://localhost:8080/api/react/customers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(customer),
+      });
+      if (!response.ok) throw new Error('Failed to post customer');
+      return await response.json();
+    } catch (error) {
+      console.error('Error posting customer:', error);
     }
+  };
+
+
+  const handleSaveClick = async () => {
+    try {
+      if (selectedCustomer.id === -1) {
+        await post(selectedCustomer);
+      } else {
+        console.log("update");
+        //await put(selectedCustomer.id, selectedCustomer);
+      }
   
-    // Update the customer list and clear the form
-    setCustomers(getAll());
-    setSelectedCustomer(blankCustomer); // Clear the form by setting it to blankCustomer
+      // Fetch the updated customer list
+      await getCustomers();
+      setSelectedCustomer(blankCustomer);
+    } catch (error) {
+      console.error('Error saving customer:', error);
+    }
   };
 
   const handleCancelClick = () => {

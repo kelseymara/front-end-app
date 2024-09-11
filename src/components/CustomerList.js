@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { getAll, deleteById } from '../memdb';
 
 
 const CustomerList = ({ customers, selectedCustomer, onItemClick }) => {
