@@ -5,14 +5,14 @@ const CustomerForm = ({ selectedCustomer, formHeader, onInputChange, onSaveClick
   return (
     <div className="customer-form-container">
       <div className="card shadow-sm">
-      <h2>{formHeader}</h2>
-      <form className="border">
+      <h2 className="p-2">{formHeader}</h2>
+      <form className="border p-2">
         <div className="mb-3">
           <label>Name:</label>
           <input
             name="name"
             type="text"
-            className="mt-3"
+            className="mt-2"
             value={selectedCustomer ? selectedCustomer.name : ''}
             onChange={onInputChange}
           />

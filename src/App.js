@@ -128,8 +128,8 @@ function App() {
     }
   };
 
-  // If customer is not selected, then header is "Add", else it is "Updated"
-  const formHeader = selectedCustomer.id === -1 ? 'Add' : 'Update'; 
+  // If customer is not selected, then header is "Add Customer", else it is "Update Customer"
+  const formHeader = selectedCustomer.id === -1 ? 'Add Customer' : 'Update Customer'; 
  
     // Handle form input change
     const handleInputChange = (e) => {

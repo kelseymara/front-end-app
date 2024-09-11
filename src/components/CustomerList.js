@@ -4,7 +4,8 @@ import '../CustomerList.css'
 const CustomerList = ({ customers, selectedCustomer, onItemClick }) => {
   return (
     <div className="customer-list-container">
-      <h2>Customer List</h2>
+      <div className="card shadow-sm"> 
+      <h2 className="p-2">Customer List</h2>
       <table className="table table-bordered table-striped">
         <thead>
           <tr>
@@ -28,6 +29,7 @@ const CustomerList = ({ customers, selectedCustomer, onItemClick }) => {
           ))}
         </tbody>
       </table>
+      </div> 
     </div>
   );
 };

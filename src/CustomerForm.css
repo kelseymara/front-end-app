@@ -11,3 +11,18 @@
     margin-top: 50px;
   }
   
+
+form div {
+    margin-bottom: 10px; /* Add space between form fields */
+  } 
+
+  input, select, textarea {
+    background-color: #f6f0ff; /* Matches the main background color */
+    border: 1px solid #d1c4e9;
+    padding: 2px;
+    border-radius: 6px;
+    width: 300px;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
