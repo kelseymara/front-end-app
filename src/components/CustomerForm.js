@@ -8,8 +8,9 @@ const CustomerForm = ({ selectedCustomer, formHeader, onInputChange, onSaveClick
       <h2 className="p-2">{formHeader}</h2>
       <form className="border p-2">
         <div className="mb-3">
-          <label>Name:</label>
+          <label htmlFor="name">Name:</label>
           <input
+            id="name"
             name="name"
             type="text"
             className="mt-2"
@@ -18,8 +19,9 @@ const CustomerForm = ({ selectedCustomer, formHeader, onInputChange, onSaveClick
           />
         </div>
         <div>
-          <label>Email:</label>
+          <label htmlFor="email">Email:</label>
           <input
+            id="email"
             name="email"
             type="email"
             value={selectedCustomer ? selectedCustomer.email : ''}
@@ -27,8 +29,9 @@ const CustomerForm = ({ selectedCustomer, formHeader, onInputChange, onSaveClick
           />
         </div>
         <div>
-          <label>Password:</label>
+          <label htmlFor="password">Password:</label>
           <input
+            id="password"
             name="password"
             type="password"
             value={selectedCustomer ? selectedCustomer.password : ''}
