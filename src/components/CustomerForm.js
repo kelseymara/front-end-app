@@ -12,8 +12,19 @@ const CustomerForm = ({
   return (
     <div className="customer-form-container">
       <div className="card shadow-sm">
-        <h2 className="p-2">{formHeader}</h2>
+        {/* Header with aria-live to announce form state changes */}
+        <h2 className="p-2" aria-live="polite">
+          {formHeader}
+        </h2>
+        {/* Assertive announcement for selection changes */}
+        <div className="visually-hidden" aria-live="assertive">
+          {/* Display a message if a customer is selected, otherwise show nothing */}
+          {selectedCustomer.id !== -1
+            ? `You are editing ${selectedCustomer.name}.`
+            : ""}
+        </div>
         <form className="border p-2">
+          {/* Input field for customer's name */}
           <div className="mb-3">
             <label htmlFor="name">Name:</label>
             <input
@@ -25,6 +36,7 @@ const CustomerForm = ({
               onChange={onInputChange}
             />
           </div>
+          {/* Input field for customer's email*/}
           <div>
             <label htmlFor="email">Email:</label>
             <input
@@ -35,6 +47,7 @@ const CustomerForm = ({
               onChange={onInputChange}
             />
           </div>
+          {/* Input field for customer's password*/}
           <div>
             <label htmlFor="password">Password:</label>
             <input
@@ -45,6 +58,7 @@ const CustomerForm = ({
               onChange={onInputChange}
             />
           </div>
+          {/* Button to delete the customer */}
           <button
             type="button"
             onClick={onDeleteClick}
@@ -52,6 +66,7 @@ const CustomerForm = ({
           >
             Delete
           </button>
+          {/* Button to save the customer */}
           <button
             type="button"
             onClick={onSaveClick}
@@ -59,6 +74,7 @@ const CustomerForm = ({
           >
             Save
           </button>
+          {/* Button to cancel customer selection */}
           <button
             type="button"
             onClick={onCancelClick}
