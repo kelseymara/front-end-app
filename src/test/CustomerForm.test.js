@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import CustomerForm from "../components/CustomerForm"
@@ -87,7 +87,7 @@ test("calls onSaveClick when Save button is clicked", () => {
 test("calls onCancelClick when Cancel button is clicked", () => {
   render(
     <CustomerForm
-      selectedCustomer={blankCustomer}
+      selectedCustomer={mockCustomers[0]}
       formHeader="Add Customer"
       onInputChange={handleInputChange}
       onSaveClick={handleSaveClick}
@@ -101,6 +101,14 @@ test("calls onCancelClick when Cancel button is clicked", () => {
 
   // Check if onCancelClick was called
   expect(handleCancelClick).toHaveBeenCalled();
+
+   // Check if the form fields are reset to blankCustomer values
+  waitFor(() => {
+    // Check if the form fields are reset to blankCustomer values
+    expect(screen.getByLabelText(/Name:/).value).toBe(blankCustomer.name);
+    expect(screen.getByLabelText(/Email:/).value).toBe(blankCustomer.email);
+    expect(screen.getByLabelText(/Password:/).value).toBe(blankCustomer.password);
+  });
 });
 
 // Test Delete button click

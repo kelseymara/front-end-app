@@ -33,7 +33,7 @@ test("renders CustomerList with given customers", () => {
     />
   );
 
-  // The label “Customer List” should appear on-screen, above the list of Customer records.
+  // The label “Customer List” should appear on-screen
   expect(screen.getByText("Customer List")).toBeInTheDocument();
 
   // The following fields should be maintained for each Customer: name, email, password.
