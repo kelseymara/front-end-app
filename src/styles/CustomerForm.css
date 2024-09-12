@@ -1,31 +1,29 @@
 /* Font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300&display=swap");
 
 .customer-form-container {
-    background-color:white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
-  }
-  
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+}
 
 form div {
-    margin-bottom: 10px; /* Add space between form fields */
-  } 
+  margin-bottom: 10px; /* Add space between form fields */
+}
 
-  input, select, textarea {
-    background-color: #f6f0ff; /* Matches the main background color */
-    border: 1px solid #d1c4e9;
-    padding: 2px;
-    border-radius: 6px;
-    width: 300px;
-    margin-bottom: 10px;
-    font-family: 'Poppins', sans-serif;
-  }
-
+input,
+select,
+textarea {
+  background-color: #f6f0ff; /* Matches the main background color */
+  border: 1px solid #d1c4e9;
+  padding: 2px;
+  border-radius: 6px;
+  width: 300px;
+  margin-bottom: 10px;
+  font-family: "Poppins", sans-serif;
+}
 
 label {
   display: block;
