@@ -88,7 +88,7 @@ function App() {
     // Put function
     const put = async (id, customer) => {
       try {
-        const response = await fetch(`http://localhost:8080/api/react/customers/${id}`, {
+        const response = await fetch(`http://localhost:8080/api/customers/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(customer),

@@ -34,4 +34,6 @@ label {
   padding: 4px;
 }
 
-
+button:hover {
+  transform: scale(1.15); /* Slightly enlarge button on hover */
+}

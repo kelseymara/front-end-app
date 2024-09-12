@@ -10,38 +10,44 @@ const mockCustomers = [
   { id: 3, name: 'Tuan', email: 'tuan@example.com', password: 'password789' }
 ];
 
+// Blank customer (no customer selected)
+const blankCustomer = { id: -1, name: '', email: '', password: '' };
+
 // Test for rendering
 test('renders CustomerList with given customers', () => {
-    render(<CustomerList customers={mockCustomers} selectedCustomer={{ id: -1, name: '', email: '', password: '' }} onItemClick={() => {}} />);
+    render(<CustomerList customers={mockCustomers} selectedCustomer={{ blankCustomer }} onItemClick={() => {}} />);
   
-    // Check if the Customer List title is in the document
+    // The label “Customer List” should appear on-screen, above the list of Customer records.
     expect(screen.getByText('Customer List')).toBeInTheDocument();
     
-    // Check if the table headers are in the document
+    // The following fields should be maintained for each Customer: name, email, password.
     expect(screen.getByText('Name')).toBeInTheDocument();
     expect(screen.getByText('Email')).toBeInTheDocument();
     expect(screen.getByText('Password')).toBeInTheDocument();
-    
-    
-    // Check if both customers' names are in the document
-    expect(screen.getByText('Kelsey')).toBeInTheDocument();
-    expect(screen.getByText('Melanie')).toBeInTheDocument();
-    expect(screen.getByText('Tuan')).toBeInTheDocument();
+
+    // 1 The app should display a list of Customer records.
+    // Check if each customer's fields are in the document
+    mockCustomers.forEach(customer => {
+      expect(screen.getByText(customer.name)).toBeInTheDocument();
+      expect(screen.getByText(customer.email)).toBeInTheDocument();
+      expect(screen.getByText(customer.password)).toBeInTheDocument();
+    });
   });
   
-  // Test for applied style to selected customer 
+  // Selected records should appear with a bold font.
   test('applies bold style to selected customer', () => {
     render(
       <CustomerList
         customers={mockCustomers}
         selectedCustomer={mockCustomers[0]} // Providing a valid selectedCustomer
-        onItemClick={() => {}}
+        onItemClick={() => {}} // function since click handling is not being tested here
       />
     );
   
-    // Getting Row with my name
+    // Getting Row with my name ('tr' = table row)
     const kelseyRow = screen.getByText('Kelsey').closest('tr');
     
     // Ensure the row has the correct style
     expect(kelseyRow).toHaveStyle('fontWeight: bold');
   });
+

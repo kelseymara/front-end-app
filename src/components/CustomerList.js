@@ -6,6 +6,7 @@ const CustomerList = ({ customers, selectedCustomer, onItemClick }) => {
     <div className="customer-list-container">
       <div className="card shadow-sm"> 
       <h2 className="p-2">Customer List</h2>
+      <p className="p-2">Click on a customer from the list to change the add form to an update form with their details.</p>
       <table className="table table-bordered table-striped">
         <thead>
           <tr>
