@@ -29,6 +29,13 @@ const CustomerList = ({ customers, selectedCustomer, onItemClick }) => {
                 key={customer.id}
                 // When the row is clicked, call onItemClick function with the current customer
                 onClick={() => onItemClick(customer)} 
+                onKeyDown={(e) => { // Event handler for keyboard interactions
+                  if (e.key === 'Enter' || e.key === ' ') { // Checks if the pressed key is 'Enter' or 'Space'
+                    onItemClick(customer); // Calls onItemClick with the current customer if the key is 'Enter' or 'Space'
+                  }
+                }}
+                aria-selected={selectedCustomer.id === customer.id} // ARIA attribute to indicate if the row is currently selected
+                tabIndex={0} // Makes the row focusable, allowing keyboard users to navigate to it using the Tab key
                 // Bold the customer if the current row's customer is the same as the selectedCustomer
                 // If the customer is not selected, the font weight remains normal
                 style={{
