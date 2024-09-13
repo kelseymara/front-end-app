@@ -33,6 +33,7 @@ const CustomerForm = ({
               type="text"
               className="mt-2"
               value={selectedCustomer ? selectedCustomer.name : ""}
+              required
               onChange={onInputChange}
             />
           </div>

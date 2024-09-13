@@ -17,7 +17,7 @@ input,
 select,
 textarea {
   background-color: #f6f0ff; /* Matches the main background color */
-  border: 1px solid #d1c4e9;
+  border: 1px solid #e0b3ff; /* Light purple border */
   padding: 2px;
   border-radius: 6px;
   width: 300px;
