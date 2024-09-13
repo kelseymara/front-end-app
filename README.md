@@ -10,7 +10,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - A customer form with:
   - A title that displays the form's state: "Add" or "Update"
   - Labelled Input fields for: "name", "email" and "password" o "delete", "save" and "cancel" buttons
-  - stage-03: a dynamic version of the application that uses in-memory data that has the following features: 
+- stage-03: a dynamic version of the application that uses in-memory data that has the following features: 
   - added basic styling
   - add list-item selection: when you click on a customer it appears in **bold** and the customer's information
     appears in the form
