@@ -10,7 +10,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - A customer form with:
   - A title that displays the form's state: "Add" or "Update"
   - Labelled Input fields for: "name", "email" and "password" o "delete", "save" and "cancel" buttons
-
+- stage-03: a dynamic version of the application that uses in-memory data that has the following features: 
+  - added basic styling
+  - add list-item selection: when you click on a customer it appears in **bold** and the customer's information
+    appears in the form
+  - add list-item deselection: if no items in the list are selected the formObject should be set to the "blankCustomer" variable
+  - implement cancel button: clicking on cancel  takes the user back to the state where no customer is selected
+  - upgrade memdb.js: replace hard-coded data array with a fully implemented memdb.js in-memory data store
+  - update customers with a useEffect hook: after retrieving the list useEffect re-renders the application so that customer data appears in the list on-screen
+  - implement delete button:  delete the currently selected customer using the memdb "deleteById" function
+  - implement form modes: Set the mode variable's value based on the current formObject. The form should be in "Add" mode when it is displaying a new empty record (the "blankCustomer" with id=-1). The form should be in "Update" mode when it is displaying one of the customers from the customer list
+  - implement save button: clicking on save adds new records and updates existing records
+ - stage-04: refactor app into separate components: App, CustomerList, CustomerForm
+ - stage-05: refactor app to use REST server and add testing
 
 ## Available Scripts
 
