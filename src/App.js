@@ -39,31 +39,13 @@ function App() {
     console.log("in getCustomers()");
     setCustomers(getAll()); // Calls getAll() from memdb.js and updates the state
   };
-  
+
+// Get customers when the component mounts
   useEffect(() => {
     getCustomers(); // Calls getCustomers when the component mounts
   }, []); // Empty dependency array means this effect runs once when the component mounts
   
-  /*
-  // Fetch the list of customers from the backend
-  const fetchCustomers = async () => {
-    try {
-      const response = await fetch('http://localhost:8080/api/customers');
-      if (!response.ok) {
-        throw new Error('Error fetching customers');
-      }
-      const customerList = await response.json();
-      setCustomers(customerList);
-    } catch (error) {
-      console.error('Failed to fetch customers:', error);
-    }
-  };
-
-  // Fetch customers when component mounts
-  useEffect(() => {
-    fetchCustomers();
-  }, []); */
-
+//  Save button click function (create or update customer)
   const handleSaveClick = () => {
     // Check if the form is in "Add" mode
     if (selectedCustomer.id === -1) {
@@ -79,6 +61,7 @@ function App() {
     setSelectedCustomer(blankCustomer); // Clear the form by setting it to blankCustomer
   };
 
+  // Cancel button click (clears the form)
   const handleCancelClick = () => {
     setSelectedCustomer(blankCustomer);
     
