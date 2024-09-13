@@ -9,6 +9,20 @@ function App() {
 
    // Manage state for the selected customer 
    const [selectedCustomer, setSelectedCustomer] = useState(blankCustomer);
+
+    // Holds the selected customer
+   const [customers, setCustomers] = useState([]);
+
+    const getCustomers = () => {
+    console.log("in getCustomers()");
+    setCustomers(getAll()); // Calls getAll() from memdb.js and updates the state
+  };
+
+// Get customers when the component mounts
+  useEffect(() => {
+    getCustomers(); // Calls getCustomers when the component mounts
+  }, []); // Empty dependency array means this effect runs once when the component mounts
+
   
   // Handle when a row is clicked
    const handleItemClick = (customer) => {
@@ -33,18 +47,7 @@ function App() {
     setSelectedCustomer(blankCustomer); // Clear the form by setting it to blankCustomer
   };
 
-  const [customers, setCustomers] = useState([]);
 
-  const getCustomers = () => {
-    console.log("in getCustomers()");
-    setCustomers(getAll()); // Calls getAll() from memdb.js and updates the state
-  };
-
-// Get customers when the component mounts
-  useEffect(() => {
-    getCustomers(); // Calls getCustomers when the component mounts
-  }, []); // Empty dependency array means this effect runs once when the component mounts
-  
 //  Save button click function (create or update customer)
   const handleSaveClick = () => {
     // Check if the form is in "Add" mode
