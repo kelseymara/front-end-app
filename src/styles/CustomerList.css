@@ -16,3 +16,7 @@
   color: #4a3c78; /* Darker purple for table cell text */
   padding: 12px;
 }
+
+tr:hover{
+  cursor: pointer; /* Changes cursor to indicate customer can be selected */
+}
