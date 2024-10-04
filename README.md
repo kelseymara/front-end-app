@@ -24,6 +24,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  - stage-04: refactor app into separate components: App, CustomerList, CustomerForm
  - stage-05: refactor app to use REST server and add testing
 
+## Running with Backend
+The Backend code can be found here: https://github.com/kelseymara/data-api
+- Make sure to run the branch "stage-03-for-react"
+- When you run both, you can see the front-end make calls to the backend and store the relevant info into the HSQL database
 
 ## Available Scripts
 
